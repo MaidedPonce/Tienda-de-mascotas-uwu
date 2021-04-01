@@ -3,6 +3,7 @@ const path = require('path')
 const boom = require('boom')
 const productsRouter = require('./routes/views/products')
 const productsApiRouter = require('./routes/api/products')
+const authApiRouter = require('./routes/api/auth')
 const app = express()
 
 const {
@@ -22,7 +23,7 @@ app.set('view engine', 'pug')
 
 app.use('/products', productsRouter)
 app.use('/api/products', productsApiRouter)
-
+app.use('/api/auth', authApiRouter)
 app.use(function (req, res, next) {
   if (isRequestAjaxOrApi(req)) {
     const {
